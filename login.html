@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - ☕ Angel’s Coffee Shop</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: url('') center/cover no-repeat fixed;
+      color: #3a2b23;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      background: rgba(50, 30, 20, 0.85);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #d9a05b;
+    }
+
+    /* ===== HAMBURGER MENU ===== */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .bar {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 4px 0;
+      transition: 0.3s;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: rgba(50, 30, 20, 0.95);
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        padding: 15px 0;
+      }
+      nav.active {
+        display: flex;
+      }
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    /* ===== LOGIN FORM ===== */
+    .login-container {
+      background: rgba(255, 255, 255, 0.9);
+      max-width: 400px;
+      margin: 80px auto;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    .login-container h2 {
+      margin-bottom: 20px;
+      color: #6b4226;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      text-align: left;
+      font-weight: 600;
+      color: #3a2b23;
+    }
+
+    input {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    button {
+      background-color: #6b4226;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #d9a05b;
+    }
+
+    p {
+      font-size: 14px;
+    }
+
+    p a {
+      color: #6b4226;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    p a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background-color:#2e1c13;
+      color: #fff;
+      padding: 35px 20px;
+      margin-top: 70px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin:auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .footer-column h4 {
+      margin-bottom:0;
+      color: #d9a05b;
+      font-size: 17px;
+    }
+
+    .footer-column a {
+      color: #ccc;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-column a:hover {
+      color: #fff;
+      transform: translateX(3px);
+    }
+
+    footer p {
+      text-align: center;
+      margin-top: 25px;
+      font-size: 13px;
+      color: #aaa;
+    }
+
+    @media (max-width: 768px) {
+      .footer-container {
+        text-align: center;
+      }
+      .footer-column {
+        min-width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="logo">☕ Angel’s Coffee Shop</div>
+    <div class="hamburger" id="hamburger">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <nav id="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="product.html">Product</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="cart.html">Cart</a>
+      <a href="login.html" class="active">Login</a>
+      <a href="register.html">Register</a>
+    </nav>
+  </header>
+
+  <!-- ===== LOGIN FORM ===== -->
+  <div class="login-container">
+    <h2>Login</h2>
+    <form id="login-form">
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Enter your email" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter your password" required>
+
+      <button type="submit">Login</button>
+      <p>Don't have an account? <a href="register.html">Register here</a></p>
+    </form>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h4>☕ Angel’s Coffee Shop</h4>
+        <p>Premium coffee made with love. Sourced responsibly and served with passion.</p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="product.html">Shop</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About Us</a>
+        <a href="cart.html">Cart</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>Help</h4>
+        <a href="contact.html">Contact Us</a>
+        <a href="#">Shipping Info</a>
+        <a href="#">Returns</a>
+        <a href="#">FAQs</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>Follow Us</h4>
+        <a href="#">📘 Facebook</a>
+        <a href="#">📷 Instagram</a>
+        <a href="#">🐦 Twitter/X</a>
+        <a href="#">▶️ YouTube</a>
+      </div>
+    </div>
+
+    <p>© 2025 ☕ Angel’s Coffee Shop. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Hamburger Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

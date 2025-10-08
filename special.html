@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Special Promotions - ☕ Angel’s Coffee Shop</title>
+  <style>
+    /* ===== GLOBAL STYLE ===== */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background:burlywood;
+      color:black;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      background-color: rgba(46, 28, 19, 0.95);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+    }
+
+    header h1 {
+      font-size: 24px;
+      color: #d9a05b;
+      margin: 0;
+    }
+
+    nav {
+      display: flex;
+      gap: 25px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #d9a05b;
+    }
+
+    /* ===== SPECIAL SECTION ===== */
+    main {
+      padding: 50px 20px;
+      text-align: center;
+      background-color:#3b2f2f;;
+    }
+
+    main h2 {
+      color:white;
+      font-size: 30px;
+      margin-bottom: 30px;
+    }
+
+    .special-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      max-width: 3000px;
+      margin: auto;
+    }
+
+    .special-box {
+      background:white ;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+      transition: 0.3s;
+    }
+
+    .special-box:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    }
+
+    .special-box img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .special-box h3 {
+      color:black;
+      font-size: 20px;
+      margin: 15px 0 5px;
+    }
+
+    .special-box p {
+      font-size: 14px;
+      color:black;
+      margin-bottom: 15px;
+      padding: 0 10px;
+    }
+
+    /* ===== FOOTER (same as product page) ===== */
+    footer {
+      background: #2e1c13;
+      color: #fff;
+      padding: 50px 20px 20px;
+      margin-top: 200px;
+    }
+
+    .footer-container {
+      max-width: 3000px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .footer-column h4 {
+      color: #d9a05b;
+      margin-bottom: 1px;
+    }
+
+    .footer-column p {
+      font-size: 14px;
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-column ul li {
+      margin: 1px 0;
+    }
+
+    .footer-column a {
+      font-size: 14px;
+      color: #ccc;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .footer-column a:hover {
+      color: #fff;
+    }
+
+    .footer-social a {
+      color: #d9a05b;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .footer-social a:hover {
+      color: #fff;
+      transform: scale(1.1);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 25px;
+      border-top: 1px solid #444;
+      padding-top: 10px;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER + NAV ===== -->
+  <header>
+    <h1>☕ Angel’s Coffee Shop</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="product.html">Products</a>
+      <a href="special.html">Special</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html">Cart</a>
+    </nav>
+  </header>
+
+  <!-- ===== SPECIAL PROMOS ===== -->
+  <main>
+    <h2>Special Promotions</h2>
+    <div class="special-container">
+      <div class="special-box">
+        <img src="s1.jpg" alt="Special 1">
+        <h3>Holiday Blend</h3>
+        <p>Warm and festive blend available for a limited time only.</p>
+      </div>
+
+      <div class="special-box">
+        <img src="s2.jpg" alt="Special 2">
+        <h3>Buy 1 Get 1</h3>
+        <p>Get two coffees for the price of one every Friday morning!</p>
+      </div>
+
+      <div class="special-box">
+        <img src="s3.jpg" alt="Special 3">
+        <h3>Student Discount</h3>
+        <p>Show your school ID and enjoy 15% off on all drinks.</p>
+      </div>
+
+      <div class="special-box">
+        <img src="car.jpg" alt="Special 4">
+        <h3>Caramel Treat</h3>
+        <p>A creamy caramel delight available for a short time only.</p>
+      </div>
+
+      <div class="special-box">
+        <img src="morni.jpg" alt="Special 5">
+        <h3>Morning Combo</h3>
+        <p>Get a free cookie with every morning brew order.</p>
+      </div>
+
+      <div class="special-box">
+        <img src="wek.jpg" alt="Special 6">
+        <h3>Weekend Latte</h3>
+        <p>20% off all latte drinks every weekend — treat yourself!</p>
+      </div>
+
+      <div class="special-box">
+        <img src="esh.jpg" alt="Special 7">
+        <h3>Espresso Shot</h3>
+        <p>Free espresso shot on your third visit this month.</p>
+      </div>
+
+      <div class="special-box">
+        <img src="bday.jpg" alt="Special 8">
+        <h3>Birthday Perk</h3>
+        <p>Celebrate your birthday with a free slice of cake!</p>
+      </div>
+
+      <div class="special-box">
+        <img src="sig.jpg" alt="Special 9">
+        <h3>Signature Mocha</h3>
+        <p>Experience our premium mocha with rich chocolate flavor.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h4>☕ Angel’s Coffee Shop</h4>
+        <p>Premium coffee made with love. Sourced responsibly and served with passion.</p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Shop</a></li>
+          <li><a href="special.html">Special</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="cart.html">Cart</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Help</h4>
+        <ul>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Shipping Info</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">FAQs</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column footer-social">
+        <h4>Follow Us</h4>
+        <ul>
+          <li><a href="#">📘 Facebook</a></li>
+          <li><a href="#">📷 Instagram</a></li>
+          <li><a href="#">🐦 Twitter/X</a></li>
+          <li><a href="#">▶️ YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2025 ☕ Angel’s Coffee Shop. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>

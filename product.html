@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products - ☕ Angel’s Coffee Shop</title>
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background: #f5f0eb;
+    color: #3a2b23;
+  }
+
+  /* HEADER */
+  header {
+    background: rgba(50, 30, 20, 0.85);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+  .logo { font-size: 22px; font-weight: bold; }
+  nav { display: flex; gap: 20px; }
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+  }
+  nav a:hover, nav a.active {
+    color: #d9a05b;
+    text-decoration: underline;
+    font-weight: 600;
+  }
+
+  .hamburger { display: none; flex-direction: column; cursor: pointer; }
+  .bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+    transition: 0.3s;
+  }
+
+  @media (max-width: 768px) {
+    nav {
+      position: absolute;
+      top: 60px;
+      left: 0;
+      right: 0;
+      background: rgba(50, 30, 20, 0.95);
+      flex-direction: column;
+      align-items: center;
+      display: none;
+      padding: 15px 0;
+    }
+    nav.active { display: flex; }
+    .hamburger { display: flex; }
+  }
+
+  /* CONTAINER */
+  .container {
+    max-width: 3000px;
+    margin: 30px auto;
+    text-align: center;
+    background: rgba(255,255,255,0.95);
+    padding: 50px 40px;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  }
+
+  .container h1 {
+    margin-bottom: 25px;
+    color: #4b2c20;
+  }
+
+  /* GRID */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+  }
+  @media(max-width:1000px){ .grid { grid-template-columns: repeat(3,1fr); } }
+  @media(max-width:700px){ .grid { grid-template-columns: repeat(2,1fr); } }
+  @media(max-width:500px){ .grid { grid-template-columns: 1fr; } }
+
+  .product-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(39, 18, 18, 0.952);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+  }
+
+  .product-card img {
+    width: 90%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+
+  .product-card h3 { margin: 10px 0; color: #4b2c20; }
+  .product-card p { font-size: 14px; color: #6b5c55; margin-bottom: 10px; }
+
+  .product-card button {
+    background: #6b4226;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+
+  .product-card button:hover {
+    background: #d9a05b;
+    transform: translateY(-2px);
+  }
+
+  /* FOOTER */
+  footer {
+    background: #2e1c13;
+    color: #fff;
+    padding: 50px 20px 20px;
+    margin-top: 60px;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+  }
+
+  .footer-column {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .footer-column h4 {
+    color: #d9a05b;
+    margin-bottom: 10px;
+  }
+
+  .footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-column ul li {
+    margin: 6px 0;
+  }
+
+  .footer-column a {
+    font-size: 14px;
+    color: #ccc;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  .footer-column a:hover {
+    color: #fff;
+  }
+
+  .footer-social a {
+    display: inline-block;
+    margin-right: 10px;
+    color: #d9a05b;
+    font-size: 16px;
+    transition: 0.3s;
+  }
+
+  .footer-social a:hover {
+    color: #fff;
+    transform: scale(1.1);
+  }
+
+  .footer-bottom {
+    text-align: center;
+    margin-top: 25px;
+    border-top: 1px solid #444;
+    padding-top: 10px;
+    font-size: 14px;
+    color: #aaa;
+  }
+
+  @media (max-width: 768px) {
+    .footer-container { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">☕ Angel’s Coffee Shop</div>
+  <nav id="nav-menu">
+    <a href="index.html">Home</a>
+    <a href="products.html" class="active">Products</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="cart.html">Cart</a>
+  </nav>
+  <div class="hamburger" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+</header>
+
+<!-- PRODUCT GRID -->
+<div class="container">
+  <h1>Our Products</h1>
+  <div class="grid">
+    <div class="product-card"><img src="a.jpg" alt="Espresso"><h3>Espresso</h3><p>Rich and bold espresso shot.</p><button class="add-to-cart" data-name="Espresso" data-price="120">Add to Cart</button></div>
+    <div class="product-card"><img src="2.jpg" alt="Latte"><h3>Latte</h3><p>Smooth espresso with milk.</p><button class="add-to-cart" data-name="Latte" data-price="150">Add to Cart</button></div>
+    <div class="product-card"><img src="3.jpg" alt="Cappuccino"><h3>Cappuccino</h3><p>Creamy foam-topped coffee.</p><button class="add-to-cart" data-name="Cappuccino" data-price="160">Add to Cart</button></div>
+    <div class="product-card"><img src="4.jpg" alt="Mocha"><h3>Mocha</h3><p>Chocolate-flavored espresso.</p><button class="add-to-cart" data-name="Mocha" data-price="170">Add to Cart</button></div>
+    <div class="product-card"><img src="5.jpg" alt="Americano"><h3>Americano</h3><p>Classic espresso with water.</p><button class="add-to-cart" data-name="Americano" data-price="140">Add to Cart</button></div>
+    <div class="product-card"><img src="6.jpg" alt="Macchiato"><h3>Macchiato</h3><p>Espresso marked with foam.</p><button class="add-to-cart" data-name="Macchiato" data-price="150">Add to Cart</button></div>
+    <div class="product-card"><img src="7.jpg" alt="Flat White"><h3>Flat White</h3><p>Velvety espresso and milk.</p><button class="add-to-cart" data-name="Flat White" data-price="160">Add to Cart</button></div>
+    <div class="product-card"><img src="8.jpg" alt="Cold Brew"><h3>Cold Brew</h3><p>Chilled slow-brewed coffee.</p><button class="add-to-cart" data-name="Cold Brew" data-price="180">Add to Cart</button></div>
+    <div class="product-card"><img src="9.jpg" alt="Affogato"><h3>Affogato</h3><p>Espresso with ice cream.</p><button class="add-to-cart" data-name="Affogato" data-price="190">Add to Cart</button></div>
+    <div class="product-card"><img src="10.jpg" alt="Irish Coffee"><h3>Irish Coffee</h3><p>Coffee with Irish cream.</p><button class="add-to-cart" data-name="Irish Coffee" data-price="200">Add to Cart</button></div>
+    <div class="product-card"><img src="11.jpg" alt="Caramel Latte"><h3>Caramel Latte</h3><p>Sweet caramel coffee blend.</p><button class="add-to-cart" data-name="Caramel Latte" data-price="180">Add to Cart</button></div>
+    <div class="product-card"><img src="12.jpg" alt="Hazelnut Coffee"><h3>Hazelnut Coffee</h3><p>Nutty flavored perfection.</p><button class="add-to-cart" data-name="Hazelnut Coffee" data-price="190">Add to Cart</button></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-column">
+      <h4>☕ Angel’s Coffee Shop</h4>
+      <p>Premium coffee made with love. Sourced responsibly and served with passion.</p>
+    </div>
+
+    <div class="footer-column">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Shop</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Help</h4>
+      <ul>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Shipping Info</a></li>
+        <li><a href="#">Returns</a></li>
+        <li><a href="#">FAQs</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column footer-social">
+      <h4>Follow Us</h4>
+      <ul>
+        <li><a href="#">📘 Facebook</a></li>
+        <li><a href="#">📷 Instagram</a></li>
+        <li><a href="#">🐦 Twitter/X</a></li>
+        <li><a href="#">▶️ YouTube</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 ☕ Angel’s Coffee Shop. All rights reserved.
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('nav-menu').classList.toggle('active');
+  }
+
+  const buttons = document.querySelectorAll('.add-to-cart');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const name = btn.getAttribute('data-name');
+      const price = parseFloat(btn.getAttribute('data-price'));
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const existing = cart.find(item => item.name === name);
+      if (existing) { existing.qty += 1; } 
+      else { cart.push({ name, price, qty: 1 }); }
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${name} added to cart!`);
+    });
+  });
+</script>
+
+</body>
+</html>

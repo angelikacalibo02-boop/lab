@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cart - ☕ Angel’s Coffee Shop</title>
+<style>
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: url('ye.jpg') center/cover no-repeat fixed;
+  color: #3a2b23;
+}
+
+/* HEADER */
+header {
+  background: rgba(50,30,20,0.85);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 35px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.logo { font-size: 22px; font-weight: bold; }
+nav { display: flex; gap: 20px; }
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+nav a:hover, nav a.active {
+  color: #d9a05b;
+  text-decoration: underline;
+  font-weight: 600;
+}
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 4px 0;
+  transition: 0.3s;
+}
+@media(max-width:768px){
+  nav {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: rgba(50,30,20,0.95);
+    flex-direction: column;
+    align-items: center;
+    display: none;
+    padding: 15px 0;
+  }
+  nav.active { display: flex; }
+  .hamburger { display: flex; }
+}
+
+/* CART */
+.cart-container {
+  max-width: 1200px;
+  margin: 100px auto 250px; /* ✅ Larger bottom margin */
+  background: rgba(255,255,255,0.95);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+.cart-container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #4b2c20;
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+.cart-table th, .cart-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+.cart-table img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.qty-input { width: 50px; text-align: center; }
+
+.cart-total {
+  text-align: right;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #4b2c20;
+}
+.remove-btn {
+  background: #c0392b;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.remove-btn:hover { background: #e74c3c; }
+
+/* ===== FOOTER ===== */
+footer {
+  background-color: #4b2c20;
+  color: #fff;
+  padding: 40px 20px 15px;
+  position: relative; /* ✅ Changed from fixed */
+  width: 100%;
+  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 50px; /* ✅ Added space between cart and footer */
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 180px;
+}
+
+.footer-column h4 {
+  margin-bottom: 10px;
+  color: #d9a05b;
+  font-size: 17px;
+}
+
+.footer-column a {
+  color: #ccc;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+  color: #fff;
+  transform: translateX(3px);
+}
+
+footer p {
+  text-align: center;
+  font-size: 13px;
+  color: #aaa;
+  margin-top: 20px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">☕ Angel’s Coffee Shop</div>
+  <nav id="nav-menu">
+    <a href="index.html">Home</a>
+    <a href="product.html">Products</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="cart.html" class="active">Cart</a>
+  </nav>
+  <div class="hamburger" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+</header>
+
+<div class="cart-container">
+  <h1>Your Cart</h1>
+  <table class="cart-table" id="cart-table">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <div class="cart-total">Total: ₱<span id="total-amount">0</span></div>
+</div>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-column">
+      <h4>☕ Angel’s Coffee Shop</h4>
+      <p>Premium coffee made with love. Sourced responsibly and served with passion.</p>
+    </div>
+
+    <div class="footer-column">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="products.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html">Cart</a>
+    </div>
+
+    <div class="footer-column">
+      <h4>Help</h4>
+      <a href="#">Contact Us</a>
+      <a href="#">Shipping Info</a>
+      <a href="#">Returns</a>
+      <a href="#">FAQs</a>
+    </div>
+
+    <div class="footer-column">
+      <h4>Follow Us</h4>
+      <a href="#">📘 Facebook</a>
+      <a href="#">📷 Instagram</a>
+      <a href="#">🐦 Twitter/X</a>
+      <a href="#">▶️ YouTube</a>
+    </div>
+  </div>
+
+  <p>© 2025 ☕ Angel’s Coffee Shop. All Rights Reserved.</p>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById('nav-menu').classList.toggle('active');
+}
+
+function loadCart(){
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const tbody = document.querySelector('#cart-table tbody');
+  tbody.innerHTML = '';
+  let totalAmount = 0;
+
+  cart.forEach((item, index) => {
+    const itemTotal = item.price * item.qty;
+    totalAmount += itemTotal;
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td><img src="${item.image || 'a.jpg'}" alt="${item.name}"></td>
+      <td>${item.name}</td>
+      <td>₱${item.price}</td>
+      <td><input type="number" min="1" class="qty-input" value="${item.qty}" data-index="${index}"></td>
+      <td>₱${itemTotal}</td>
+      <td><button class="remove-btn" data-index="${index}">Remove</button></td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  document.getElementById('total-amount').textContent = totalAmount;
+
+  document.querySelectorAll('.qty-input').forEach(input=>{
+    input.addEventListener('change', (e)=>{
+      const idx = e.target.getAttribute('data-index');
+      let value = parseInt(e.target.value);
+      if(value<1) value=1;
+      cart[idx].qty = value;
+      localStorage.setItem('cart', JSON.stringify(cart));
+      loadCart();
+    });
+  });
+
+  document.querySelectorAll('.remove-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const idx = btn.getAttribute('data-index');
+      cart.splice(idx,1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      loadCart();
+    });
+  });
+}
+
+loadCart();
+</script>
+
+</body>
+</html>

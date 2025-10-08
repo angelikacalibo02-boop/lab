@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Angel’s Coffee Shop</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      color: #3a2b23;
+      background: url('') center/cover no-repeat fixed;
+    }
+
+    header {
+      background: rgba(50, 30, 20, 0.85);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo { font-size: 22px; font-weight: bold; }
+    nav { display: flex; gap: 20px; }
+    nav a { color: white; text-decoration: none; font-weight: 500; transition: color 0.3s; }
+    nav a:hover, nav a.active { color: #d9a05b; }
+
+    .hamburger { display: none; flex-direction: column; cursor: pointer; }
+    .bar { width: 25px; height: 3px; background-color: white; margin: 4px 0; transition: 0.3s; }
+
+    @media (max-width: 768px) {
+      nav {
+        position: absolute; top: 70px; left: 0; right: 0;
+        background: rgba(50, 30, 20, 0.95);
+        flex-direction: column; align-items: center;
+        display: none; padding: 15px 0;
+      }
+      nav.active { display: flex; }
+      .hamburger { display: flex; }
+    }
+
+    /* ===== CONTACT SECTION ===== */
+    .contact-container {
+      max-width: 800px;
+      margin: 50px auto;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .contact-container h2 {
+      text-align: center;
+      margin-bottom: 10px;
+      color: #6b4226;
+    }
+
+    .contact-container p {
+      text-align: center;
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    /* Form + image wrapper */
+    .contact-form-wrapper {
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+      margin-top: 20px;
+      flex-direction: row; /* default row */
+    }
+
+    /* Image left, form right */
+    .contact-form-wrapper .contact-pic { order: 0; flex: 1; text-align: left; }
+    .contact-form-wrapper form { order: 1; flex: 1; }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label { font-weight: 500; }
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+    input:focus, textarea:focus {
+      border-color: #6b4226;
+      outline: none;
+      box-shadow: 0 0 5px rgba(107,66,38,0.3);
+    }
+    button {
+      padding: 12px;
+      background-color: #6b4226;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    button:hover {
+      background-color: #d9a05b;
+      transform: translateY(-2px);
+    }
+
+    /* contact info below form */
+    .contact-info {
+      margin-top: 30px;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #333;
+    }
+    .contact-info p { margin: 6px 0; }
+
+    /* Image styling */
+    .contact-pic img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      height: auto;
+      object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+      .contact-form-wrapper {
+        flex-direction: column;
+        text-align: center;
+      }
+      .contact-form-wrapper .contact-pic { text-align: center; }
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background-color:#2e1c13;
+      color: #fff;
+      padding: 25px 20px 10px;
+      margin-top: 50px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .footer-column { flex: 1; min-width: 180px; }
+    .footer-column h4 { margin-bottom: 10px; color: #d9a05b; font-size: 17px; }
+    .footer-column a { color: #ccc; text-decoration: none; display: block; margin-bottom: 6px; font-size: 14px; transition: 0.3s; }
+    .footer-column a:hover { color: #fff; transform: translateX(3px); }
+    footer p { text-align: center; margin-top: 15px; font-size: 13px; color: #aaa; }
+
+    @media (max-width: 768px) {
+      .footer-container { text-align: center; }
+      .footer-column { min-width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">☕ Angel’s Coffee Shop</div>
+    <div class="hamburger" id="hamburger">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <nav id="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="product.html">Products</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="cart.html">Cart</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+  </header>
+
+  <div class="contact-container">
+    <h2>Contact Us</h2>
+    <p>Have questions or feedback? We’d love to hear from you!</p>
+
+    <!-- Form + Image Side by Side -->
+    <div class="contact-form-wrapper">
+      <div class="contact-pic">
+        <img src=".jpg" alt="Coffee Shop Image">
+      </div>
+
+      <form id="contact-form">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Your full name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Your email address" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="Type your message here..." rows="4" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+
+    <!-- Contact Info Below -->
+    <div class="contact-info">
+      <p><strong>Email:</strong> info@angelscoffee.com</p>
+      <p><strong>Phone:</strong> +63 912 345 6789</p>
+      <p><strong>Address:</strong> 123 Coffee Street, Manila, Philippines</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h4>☕ Angel’s Coffee Shop</h4>
+        <p>Premium coffee made with love. Sourced responsibly and served with passion.</p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="product.html">Shop</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About Us</a>
+        <a href="cart.html">Cart</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>Help</h4>
+        <a href="#">Contact Us</a>
+        <a href="#">Shipping Info</a>
+        <a href="#">Returns</a>
+        <a href="#">FAQs</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>Follow Us</h4>
+        <a href="#">📘 Facebook</a>
+        <a href="#">📷 Instagram</a>
+        <a href="#">🐦 Twitter/X</a>
+        <a href="#">▶️ YouTube</a>
+      </div>
+    </div>
+
+    <p>© 2025 ☕ Angel’s Coffee Shop. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

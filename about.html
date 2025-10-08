@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us - ☕ Angel’s Coffee Shop</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom right, #f9f4ef, #f1e2d1);
+    color:whitesmoke;
+    overflow-x: hidden;
+  }
+
+  /* Header */
+  header {
+    background:#3e2723;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  .logo { font-size:1.7rem; font-weight:bold; color:whitesmoke; letter-spacing:1px; }
+  nav { display:flex; gap:25px; transition:0.3s; }
+  nav a { text-decoration:none; color:whitesmoke; font-weight:500; position:relative; }
+  nav a::after {
+    content:"";
+    position:absolute;
+    width:0;
+    height:2px;
+    bottom:-3px;
+    left:0;
+    background-color:#d9a05b;
+    transition: width 0.3s ease;
+  }
+  nav a:hover::after, nav a.active::after { width:100%; }
+
+  /* Hamburger Menu */
+  .hamburger { display:none; flex-direction:column; cursor:pointer; }
+  .hamburger div { width:25px; height:3px; background:#5a3825; margin:4px; transition:0.3s; }
+  @media (max-width: 768px){
+    nav { display:none; flex-direction:column; background: rgba(255,255,255,0.97); position:absolute; top:65px; right:20px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.2); padding:10px 20px; }
+    nav.show { display:flex; }
+    .hamburger { display:flex; }
+  }
+
+  /* About Section - Black Background */
+  .about {
+    padding:80px 20px;
+    background:#1c1c1c; /* black background */
+    color:#fff;
+  }
+  .about-container {
+    display:flex;
+    flex-wrap:wrap;
+    max-width:1200px;
+    margin:auto;
+    gap:40px;
+    align-items:center;
+  }
+  .about-image { flex:1 1 45%; }
+  .about-image img {
+    width:100%;
+    height:auto;
+    border-radius:20px;
+    object-fit:cover;
+    box-shadow:0 8px 20px rgba(0,0,0,0.3);
+  }
+  .about-content { 
+    flex:1 1 45%; 
+    background: rgba(0,0,0,0.7); /* semi-transparent black */
+    padding:30px; 
+    border-radius:15px; 
+    box-shadow:0 6px 20px rgba(0,0,0,0.3);
+  }
+  .about-content h2 { color:#f1c40f; font-size:2.5rem; margin-bottom:15px; }
+  .about-content p { font-size:1.1rem; line-height:1.7; color:whitesmoke; }
+
+  /* Divider */
+  .divider { width:100px; height:4px; background:#d9a05b; margin:0 auto 30px; border-radius:2px; }
+
+  /* Mission & Vision */
+  .mission-vision { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px; padding:80px 20px; background:#fff8f3; }
+  .card {
+    background:#fff; border-radius:20px; padding:30px; text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1); transition:all 0.3s ease;
+  }
+  .card:hover { transform:translateY(-10px); box-shadow:0 10px 25px rgba(0,0,0,0.15); }
+  .card h2 { color:#5a3825; margin-bottom:15px; }
+  .card p { color:#6d4c41; line-height:1.6; }
+
+  /* Team Section */
+  .team { text-align:center; padding:80px 20px; background:linear-gradient(to bottom right, #f4ebe3, #e5d0b7); }
+  .team h2 { font-size:2.2rem; color:#4b2e16; }
+  .team-members { display:flex; flex-wrap:wrap; justify-content:center; gap:40px; margin-top:40px; }
+  .member { width:240px; background:white; border-radius:20px; overflow:hidden; box-shadow:0 8px 20px rgba(0,0,0,0.15); transition:all 0.3s ease; }
+  .member:hover { transform:translateY(-8px); box-shadow:0 12px 25px rgba(0,0,0,0.25); }
+  .member img { width:100%; height:230px; object-fit:cover; filter:brightness(0.95); }
+  .member h3 { color:#5a3825; margin-top:10px; }
+  .member p { color:#6d4c41; margin-bottom:15px; font-size:0.9rem; }
+
+  /* ===== FOOTER ===== */
+    footer {
+      background: #2e1c13;
+      color: #fff;
+      padding: 50px 20px 20px;
+      margin-top: 60px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .footer-column { flex: 1; min-width: 180px; }
+    .footer-column h4 { color: #d9a05b; margin-bottom: 10px; }
+    .footer-column a { color: #ccc; display: block; margin-bottom: 6px; font-size: 14px; }
+    .footer-column a:hover { color: #fff; }
+    .footer-bottom {
+      text-align: center;
+      margin-top: 25px;
+      border-top: 1px solid #444;
+      padding-top: 10px;
+      font-size: 14px;
+      color: #aaa;
+    }
+  </style>
+
+  /* Responsive */
+  @media(max-width:900px){
+    .about-container { flex-direction:column; }
+    .about-image, .about-content { flex:1 1 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="logo">☕ Angel’s Coffee Shop</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="product.html">Products</a>
+    <a href="about.html" class="active">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div><div></div><div></div>
+  </div>
+</header>
+
+<!-- About Section -->
+<section class="about">
+  <div class="about-container">
+    <div class="about-image">
+      <img src="im.jpg" alt="Our Coffee">
+    </div>
+    <div class="about-content">
+      <h2>Our Story</h2>
+      <div class="divider"></div>
+      <p>Founded in 2022, Angel’s Coffee Shop began as a small corner café with a big dream — to bring warmth, connection, and creativity into every cup. Our love for handcrafted brews and cozy spaces inspired us to create a haven where every visitor feels like family. From the aroma of freshly roasted beans to the sound of friendly laughter, we celebrate the simple joys of life — one sip at a time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Mission & Vision -->
+<section class="mission-vision">
+  <div class="card">
+    <h2>Our Mission</h2>
+    <p>To serve coffee made with passion, sourced responsibly, and brewed to perfection — spreading happiness in every cup we make.</p>
+  </div>
+  <div class="card">
+    <h2>Our Vision</h2>
+    <p>To be the heart of every community — a place where friendships bloom, stories unfold, and inspiration flows freely like coffee.</p>
+  </div>
+</section>
+
+<!-- Team Section -->
+<section class="team">
+  <h2>Meet Our Team</h2>
+  <div class="divider"></div>
+  <div class="team-members">
+    <div class="member">
+      <img src="le.jpg" alt="Founder">
+      <h3>Angelika Calibo</h3>
+      <p>Founder & Head Barista</p>
+    </div>
+    <div class="member">
+      <img src="je.jpg" alt="Manager">
+      <h3>Jessa Quillo</h3>
+      <p>Operations Manager</p>
+    </div>
+    <div class="member">
+      <img src="ri.jpg" alt="Chef">
+      <h3>Rica Cuestas</h3>
+      <p>Pastry Chef</p>
+    </div>
+    <div class="member">
+      <img src="mer.jpg" alt="Marketing">
+      <h3>Mera Estoconing</h3>
+      <p>Marketing Specialist</p>
+    </div>
+  </div>
+</section>
+<!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h4>☕ Angel’s Coffee Shop</h4>
+        <p>Premium coffee made with love. Sourced responsibly and served with passion.</p>
+      </div>
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="product.html">Products</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About Us</a>
+        <a href="cart.html">Cart</a>
+      </div>
+      <div class="footer-column">
+        <h4>Help</h4>
+        <a href="#">Contact Us</a>
+        <a href="#">Shipping Info</a>
+        <a href="#">Returns</a>
+        <a href="#">FAQs</a>
+      </div>
+      <div class="footer-column">
+        <h4>Follow Us</h4>
+        <a href="#">📘 Facebook</a>
+        <a href="#">📷 Instagram</a>
+        <a href="#">🐦 Twitter/X</a>
+        <a href="#">▶️ YouTube</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 ☕ Angel’s Coffee Shop. All rights reserved.
+    </div>
+  </footer>
+
+
+<script>
+  function toggleMenu() {
+    document.querySelector('nav').classList.toggle('show');
+  }
+</script>
+
+</body>
+</html>

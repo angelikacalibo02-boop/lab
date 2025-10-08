@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - ☕ Angel’s Coffee Shop</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ======== Base ======== */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: #4B3B2B;
+    }
+
+    /* ======== Header ======== */
+    header {
+      background: rgba(75, 59, 43, 0.9);
+      color: #F3E9DC;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 25px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: #F3E9DC;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #D9B382;
+    }
+
+    /* ======== Hamburger ======== */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: #F3E9DC;
+      border-radius: 3px;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background: rgba(75, 59, 43, 0.95);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        border-radius: 0 0 10px 10px;
+        padding: 15px;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    /* ======== Blog Section ======== */
+    .container {
+      max-width: 3000px;
+      margin: 0 auto;
+      padding: 40px;
+      background: #6B4F3B;
+      border-radius: 5px;
+      box-shadow: 0 8px 20px rgba(75, 59, 43, 0.3);
+    }
+
+    h2 {
+      text-align: center;
+      color: whitesmoke;
+      font-size: 2rem;
+      margin-bottom: 40px;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    @media (max-width: 1000px) {
+      .blog-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .blog-grid { grid-template-columns: 1fr; }
+    }
+
+    .blog-card {
+      background: black;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+    }
+
+    .blog-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .blog-card h3 {
+      margin: 10px;
+      color: whitesmoke;
+    }
+
+    .blog-card p {
+      margin: 0 15px 20px;
+      font-size: 14px;
+      color: whitesmoke;
+      line-height: 1.6;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background-color: #2e1c13;
+      color: #fff;
+      padding: 50px 20px 20px;
+      margin-top: 60px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .footer-column h4 {
+      color: #d9a05b;
+      margin-bottom: 10px;
+      font-size: 17px;
+    }
+
+    .footer-column a {
+      color: #ccc;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .footer-column a:hover {
+      color: #fff;
+      transform: translateX(3px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 25px;
+      border-top: 1px solid #444;
+      padding-top: 10px;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    @media (max-width: 768px) {
+      .footer-container {
+        text-align: center;
+      }
+      .footer-column {
+        min-width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">☕ Angel's Coffee Shop</div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="product.html">Product</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="cart.html">Cart</a>
+    </nav>
+  </header>
+
+  <!-- Blog Section -->
+  <div class="container blog-container">
+    <h2>Latest News & Articles</h2>
+    <div class="blog-grid">
+      <div class="blog-card">
+        <img src="t1.jpg" alt="Coffee Brewing Tips">
+        <h3>Coffee Brewing Tips</h3>
+        <p>Learn the secrets to brewing the perfect cup at home.</p>
+      </div>
+      <div class="blog-card">
+        <img src="t2.jpg" alt="Sustainable Coffee">
+        <h3>Sustainable Coffee Practices</h3>
+        <p>Discover how we source our beans sustainably.</p>
+      </div>
+      <div class="blog-card">
+        <img src="t3.jpg" alt="Seasonal Specials">
+        <h3>Seasonal Specials</h3>
+        <p>Check out our limited-time seasonal drinks.</p>
+      </div>
+      <div class="blog-card">
+        <img src="lat.jpg" alt="Latte Art Tips">
+        <h3>Latte Art Tips</h3>
+        <p>Master the art of beautiful lattes with our beginner guide.</p>
+      </div>
+      <div class="blog-card">
+        <img src="far.jpg" alt="Behind the Beans">
+        <h3>Behind the Beans</h3>
+        <p>Meet the farmers and learn where your coffee really comes from.</p>
+      </div>
+      <div class="blog-card">
+        <img src="hea.jpg" alt="Health Benefits">
+        <h3>Health Benefits of Coffee</h3>
+        <p>Explore how coffee can support your focus, energy, and health.</p>
+      </div>
+      <div class="blog-card">
+        <img src="es101.jpg" alt="Espresso 101">
+        <h3>Espresso 101</h3>
+        <p>Everything you need to know about pulling the perfect espresso shot.</p>
+      </div>
+      <div class="blog-card">
+        <img src="how.jpg" alt="Cold Brew Magic">
+        <h3>Cold Brew Magic</h3>
+        <p>How to make smooth, delicious cold brew at home.</p>
+      </div>
+      <div class="blog-card">
+        <img src="pai.jpg" alt="Coffee and Dessert">
+        <h3>Coffee & Dessert Pairings</h3>
+        <p>Perfect combinations for your coffee and sweet cravings.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h4>☕ Angel’s Coffee Shop</h4>
+        <p style="font-size: 14px; color: #ccc;">
+          Premium coffee made with love. Sourced responsibly and served with passion.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="product.html">Shop</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About Us</a>
+        <a href="cart.html">Cart</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>Help</h4>
+        <a href="#">Contact Us</a>
+        <a href="#">Shipping Info</a>
+        <a href="#">Returns</a>
+        <a href="#">FAQs</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>Follow Us</h4>
+        <a href="#">📘 Facebook</a>
+        <a href="#">📷 Instagram</a>
+        <a href="#">🐦 Twitter/X</a>
+        <a href="#">▶️ YouTube</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2025 ☕ Angel’s Coffee Shop. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navMenu').classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
